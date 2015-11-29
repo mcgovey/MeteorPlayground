@@ -1,1 +1,0 @@
-Lineups = new Mongo.Collection("lineups");

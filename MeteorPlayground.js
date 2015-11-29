@@ -40,6 +40,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.createLineup.events({
+    'blur QB': function(){
+      Meteor.call("insertPlayer",this._id,"QB","1");
+    }
+  });
+
   Template.task.helpers({
     isOwner: function () {
       return this.owner === Meteor.userId();
@@ -61,6 +67,9 @@ if (Meteor.isClient) {
 
 }
 Meteor.methods({
+  insertPlayer: function (playerID,playerPos,playerOrder) {
+
+  },
   addTask: function (text) {
     // Make sure the user is logged in before inserting a task
     if (! Meteor.userId()) {

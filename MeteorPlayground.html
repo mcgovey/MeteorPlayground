@@ -3,7 +3,6 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 	<nav class="navbar navbar-fixed-top">
       <div class="container">
       <ul class="nav navbar-nav">
@@ -11,11 +10,29 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      {{> loginButtons}}
+
       </div>
     </nav>
 
   <div class="container">
     <header>
+      <h1>Create a new lineup</h1>
+
+    </header>
+
+    
+{{#if isOwner}}
+  {{#each lineups}}
+      {{lineup}}
+  {{/each}}
+{{/if}}      
+
+<button class="newLineup">Create a new Lineup</button>
+
+
+
       <h1>Todo List ({{incompleteCount}})</h1>
  
       <label class="hide-completed">
@@ -32,15 +49,11 @@
 		    {{/if}}
 		  </button>
 		{{/if}}
-
-      {{> loginButtons}}
-
        {{#if currentUser}}
         <form class="new-task">
           <input type="text" name="text" placeholder="Type to add new tasks" />
         </form>
       {{/if}}
-    </header>
  
     <ul>
       {{#each tasks}}
